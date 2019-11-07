@@ -26,3 +26,7 @@ Things you may want to cover:
 - Deployment instructions
 
 - ...
+
+# Notes
+
+curl -H "Origin: http://acme.com/" -H "Access-Control-Request-Method: POST" -H "Access-Control-Request-Headers: X-Requested-With" -X OPTIONS --verbose http://localhost:3000/quizzes
