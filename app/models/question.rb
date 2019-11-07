@@ -3,6 +3,7 @@ class Question < ApplicationRecord
     belongs_to :quiz
 
     # validation
-    validates_presence_of :question, :title
-    validates :difficulty, :greater_than_or_equal_to  1, :less_than_or_equal_to 3
+    validates_presence_of :question, :answer
+    validates_numericality_of :difficulty, :only_integer => true, :greater_than_or_equal_to => 1, :less_than_or_equal_to => 3
+
 end
