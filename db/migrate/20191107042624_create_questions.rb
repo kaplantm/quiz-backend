@@ -5,7 +5,7 @@ class CreateQuestions < ActiveRecord::Migration[6.0]
       t.string :question
       t.string :answer
       t.string :answerHeader
-      t.integer :difficulty
+      t.integer :difficulty :default => 2
       t.references :quiz, null: false, foreign_key: true
 
       t.timestamps
