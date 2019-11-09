@@ -14,8 +14,16 @@ class QuestionsController < ApplicationController
     
     # POST /quizzes/:quiz_id/questions
     def create
-        @quiz.questions.create!(question_params)
-        json_response(@quiz, :created)
+        if request.query_parameters.has_key?(:bulk)  && request.query_parameters[:bulk] === "true"
+            if question_params.has_key?(:questions) && question_params[:questions].length > 1
+                @quiz.questions.create(question_params[:questions])
+            else
+                return json_response({ error: "Bad Requestion: Missing or empty questions array in bulk update attempt." }, 400)
+            end
+        else #handle individual create
+            @quiz.questions.create(question_params)
+        end
+        json_response(@quiz.questions, :created)
     end
     
     # PUT /quizzes/:quiz_id/questions/:id
@@ -33,7 +41,7 @@ class QuestionsController < ApplicationController
     private
     
     def question_params
-        params.permit(:question, :answer, :difficulty, :questionHeader, :answerHeader)
+        params.permit(:question, :answer, :difficulty, :questionHeader, :answerHeader, :questions => [:question, :answer, :difficulty, :questionHeader, :answerHeader])
     end
     
     def set_quiz
