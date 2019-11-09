@@ -1,6 +1,7 @@
 # Tutorial Referenced
 
 https://scotch.io/tutorials/build-a-restful-json-api-with-rails-5-part-one
+https://scoutapm.com/blog/activerecord-includes-vs-joins-vs-preload-vs-eager_load-when-and-where
 
 # README
 
@@ -29,4 +30,5 @@ Things you may want to cover:
 
 # Notes
 
+Test cross origin requests
 curl -H "Origin: http://acme.com/" -H "Access-Control-Request-Method: POST" -H "Access-Control-Request-Headers: X-Requested-With" -X OPTIONS --verbose http://localhost:3000/quizzes
