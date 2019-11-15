@@ -4,10 +4,14 @@ https://scotch.io/tutorials/build-a-restful-json-api-with-rails-5-part-one
 https://scoutapm.com/blog/activerecord-includes-vs-joins-vs-preload-vs-eager_load-when-and-where
 https://docs.docker.com/compose/rails/
 
-1. https://dev.to/jamby1100/more-than-hello-world-in-docker-run-rails-sidekiq-web-apps-in-docker-1b37
-2. https://dev.to/jamby1100/deploy-rails-in-amazon-ecs-part-2-push-an-image-to-ecr-43fl
-3. https://dev.to/jamby1100/deploy-rails-in-amazon-ecs-part-3-create-the-rds-database-task-definition-and-load-balancer-1ffe
-4. https://dev.to/jamby1100/automate-docker-build-with-aws-codebuild-9om
+1. https://scoutapm.com/blog/dockerizing-a-rails-app
+2. https://scoutapm.com/blog/deploying-to-aws-part-i-running-a-rails-app-on-fargate
+
+3. https://dev.to/jamby1100/more-than-hello-world-in-docker-run-rails-sidekiq-web-apps-in-docker-1b37
+4. https://dev.to/jamby1100/deploy-rails-in-amazon-ecs-part-2-push-an-image-to-ecr-43fl
+5. https://dev.to/jamby1100/deploy-rails-in-amazon-ecs-part-3-create-the-rds-database-task-definition-and-load-balancer-1ffe
+6. https://dev.to/jamby1100/deploy-rails-in-amazon-ecs-part-4-create-an-ecs-cluster-338f
+7. https://dev.to/jamby1100/automate-docker-build-with-aws-codebuild-9om
 
 # README
 
