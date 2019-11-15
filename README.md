@@ -54,6 +54,12 @@ docker-compose run web rake db:create
 docker-compose up --build
 docker-compose run web rails db:migrate RAILS_ENV=development
 
-POSTGRESQL_HOST=raild-quiz-api-1.cccufsjkltzb.us-east-1.rds.amazonaws.com POSTGRESQL_USER_NAME=postgres RDS_PORT=5432 POSTGRESQL_PASSWORD=INSERT_HERE POSTGRESQL_DB=raild-quiz-api-1 RAILS_ENV=production bundle exec rake db:create
+POSTGRESQL_HOST=raild-quiz-api-1.cccufsjkltzb.us-east-1.rds.amazonaws.com POSTGRESQL_USER_NAME=postgres RDS_PORT=5432 POSTGRESQL_PASSWORD=INSERT_HERE POSTGRESQL_DB=quiz_cards_api_db_prod RAILS_ENV=production bundle exec rake db:create
 
-POSTGRESQL_HOST=raild-quiz-api-1.cccufsjkltzb.us-east-1.rds.amazonaws.com POSTGRESQL_USER_NAME=postgres RDS_PORT=5432 POSTGRESQL_PASSWORD=INSERT_HERE POSTGRESQL_DB=postgres RAILS_ENV=production bundle exec rake db:migrate
+POSTGRESQL_HOST=raild-quiz-api-1.cccufsjkltzb.us-east-1.rds.amazonaws.com POSTGRESQL_USER_NAME=postgres RDS_PORT=5432 POSTGRESQL_PASSWORD=INSERT_HERE POSTGRESQL_DB=quiz_cards_api_db_prod RAILS_ENV=production bundle exec rake db:migrate
+
+build for ecr
+docker build . -t my-rails-app
+docker tag my-rails-app:latest 011561437483.dkr.ecr.us-east-1.amazonaws.com/quiz-docker-rails-app:v1.0.0
+aws ecr get-login --no-include-email --region=us-east-1
+docker push 011561437483.dkr.ecr.us-east-1.amazonaws.com/quiz-docker-rails-app:v1.0.0
