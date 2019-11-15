@@ -13,6 +13,9 @@ https://docs.docker.com/compose/rails/
 6. https://dev.to/jamby1100/deploy-rails-in-amazon-ecs-part-4-create-an-ecs-cluster-338f
 7. https://dev.to/jamby1100/automate-docker-build-with-aws-codebuild-9om
 
+able to connect to local db with tableplus but not psequel
+https://www.prisma.io/forum/t/struggling-to-connect-to-docker-psql-database-from-host-machine/6094/6
+
 # README
 
 This README would normally document whatever steps are necessary to get the
@@ -43,10 +46,14 @@ Things you may want to cover:
 Test cross origin requests
 curl -H "Origin: http://acme.com/" -H "Access-Control-Request-Method: POST" -H "Access-Control-Request-Headers: X-Requested-With" -X OPTIONS --verbose http://localhost:3000/quizzes
 
-docker-compose run api rake db:drop
+docker-compose run web rake db:drop
 
 docker-compose build
 docker-compose up
-docker-compose run api rake db:create
+docker-compose run web rake db:create
 docker-compose up --build
-rails db:migrate RAILS_ENV=development
+docker-compose run web rails db:migrate RAILS_ENV=development
+
+POSTGRESQL_HOST=raild-quiz-api-1.cccufsjkltzb.us-east-1.rds.amazonaws.com POSTGRESQL_USER_NAME=postgres RDS_PORT=5432 POSTGRESQL_PASSWORD=INSERT_HERE POSTGRESQL_DB=raild-quiz-api-1 RAILS_ENV=production bundle exec rake db:create
+
+POSTGRESQL_HOST=raild-quiz-api-1.cccufsjkltzb.us-east-1.rds.amazonaws.com POSTGRESQL_USER_NAME=postgres RDS_PORT=5432 POSTGRESQL_PASSWORD=INSERT_HERE POSTGRESQL_DB=postgres RAILS_ENV=production bundle exec rake db:migrate

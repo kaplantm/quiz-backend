@@ -7,11 +7,11 @@ default: &default
 
 development:
   <<: *default
-  database: myapp_development
+  database: quiz_cards_api_db_dev
 
 test:
   <<: *default
-  database: myapp_test
+  database: quiz_cards_api_db_test
 
 production:
   <<: *default
@@ -19,3 +19,4 @@ production:
   username: <%= ENV['POSTGRESQL_USER_NAME'] %>
   password: <%= ENV['POSTGRESQL_PASSWORD'] %>
   database: <%= ENV['POSTGRESQL_DB'] %>
+  port: <%= ENV['RDS_PORT'] %>
