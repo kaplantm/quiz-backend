@@ -16,6 +16,9 @@ https://docs.docker.com/compose/rails/
 able to connect to local db with tableplus but not psequel
 https://www.prisma.io/forum/t/struggling-to-connect-to-docker-psql-database-from-host-machine/6094/6
 
+https://docs.aws.amazon.com/AmazonECS/latest/developerguide/instance-connect.html
+public ip 54.164.15.117
+
 # README
 
 This README would normally document whatever steps are necessary to get the

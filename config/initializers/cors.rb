@@ -6,8 +6,15 @@
 # Read more: https://github.com/cyu/rack-cors
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
+  if ENV["ALLOWED_ADDRESS"]
     allow do
-      origins '*'
+      origins ENV["ALLOWED_ADDRESS"]
       resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head]
     end
+  else
+      allow do
+        origins /\A(http:\/\/)?127\.0\.0\.1(:\d+)?\/?\z/, /\A(http:\/\/)?localhost(:\d+)?\/?\z/
+        resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head]
+      end
+  end
 end

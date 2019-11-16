@@ -15,5 +15,6 @@ services:
       - "3000:3000"
     environment:
       PORT: "3000"
+      # ALLOWED_ADDRESS: "http://localhost:5500"
     depends_on:
       - db
