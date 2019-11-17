@@ -15,6 +15,7 @@ class QuizzesController < ApplicationController
     
     # GET /quizzes/:id
     def show 
+        Rails.logger.info(request.headers['origin'])
         if request.query_parameters.has_key?(:details)  && request.query_parameters[:details] === "true"
             render :json => @quiz.to_json(:include =>  :questions )
             return
