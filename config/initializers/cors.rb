@@ -8,7 +8,7 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   if ENV["ALLOWED_ADDRESS"]
     allow do
-      origins ENV["ALLOWED_ADDRESS"]
+      origins Regexp.new(ENV["ALLOWED_ADDRESS"])
       resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head]
     end
   else

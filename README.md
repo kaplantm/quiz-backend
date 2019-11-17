@@ -47,7 +47,10 @@ Things you may want to cover:
 # Notes
 
 Test cross origin requests
-curl -H "Origin: http://acme.com/" -H "Access-Control-Request-Method: POST" -H "Access-Control-Request-Headers: X-Requested-With" -X OPTIONS --verbose http://localhost:3000/quizzes
+
+curl -H "Origin: https://kaplantm.github.io/angular_flashcards" -H "Access-Control-Request-Method: POST" -H "Access-Control-Request-Headers: X-Requested-With" -X OPTIONS --verbose http://localhost:3000/quizzes
+
+- will list `< Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD` if allowed
 
 docker-compose run web rake db:drop
 

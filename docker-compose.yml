@@ -15,6 +15,6 @@ services:
       - "3000:3000"
     environment:
       PORT: "3000"
-      # ALLOWED_ADDRESS: "http://localhost:5500"
+      # ALLOWED_ADDRESS: '\Ahttps:\/\/kaplantm.github.io\/angular_flashcards'
     depends_on:
       - db
