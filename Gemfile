@@ -21,6 +21,9 @@ gem 'puma', '~> 4.1'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+#https://scoutapm.com/blog/deploying-to-aws-part-v-the-final-punch-list-load-balancer-cdn-ssl
+gem 'aws-healthcheck'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 

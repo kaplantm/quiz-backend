@@ -56,6 +56,8 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2)
+    aws-healthcheck (1.0.1)
+      rails (>= 3.0)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
     builder (3.2.3)
@@ -178,6 +180,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-healthcheck
   bootsnap (>= 1.4.2)
   byebug
   database_cleaner
