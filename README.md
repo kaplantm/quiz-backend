@@ -17,7 +17,9 @@ able to connect to local db with tableplus but not psequel
 https://www.prisma.io/forum/t/struggling-to-connect-to-docker-psql-database-from-host-machine/6094/6
 
 https://docs.aws.amazon.com/AmazonECS/latest/developerguide/instance-connect.html
-public ip 54.164.15.117
+
+api versioning
+https://paweljw.github.io/2017/07/rails-5.1-api-app-part-3-api-versioning/
 
 # README
 
