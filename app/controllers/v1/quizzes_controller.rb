@@ -10,7 +10,7 @@ module V1
         
         # POST /quizzes
         def create
-            @quiz = Quiz.create!(quiz_params)
+            @quiz = Quiz.create!(quiz_params.merge(user_id: @current_user.id))
             json_response(@quiz, :created)
         end
         

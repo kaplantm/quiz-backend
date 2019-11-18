@@ -5,6 +5,7 @@ class CreateQuizzes < ActiveRecord::Migration[6.0]
       t.string :created_by
       t.boolean :public, :default => false
       t.integer :difficulty, :default => 2
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end

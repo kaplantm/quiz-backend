@@ -1,5 +1,6 @@
 class Quiz < ApplicationRecord
     # model association
+    belongs_to :user
     has_many :questions, dependent: :destroy
 
     # validations
