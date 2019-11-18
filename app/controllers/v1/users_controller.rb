@@ -1,6 +1,6 @@
 module V1
   class UsersController < ApplicationController
-    skip_before_action :authenticate_request, only: %i[sign_in sign_up]
+    skip_before_action :authenticate_request, only: %i[sign_in sign_up, refresh_token]
 
     # POST /register
     def sign_up
@@ -15,6 +15,10 @@ module V1
 
     def sign_in
       authenticate params[:email], params[:password]
+    end
+
+    def refresh_token
+      refresh(request.headers["Authorization"])
     end
 
     def test
@@ -38,8 +42,22 @@ module V1
 
       if command.success?
         render json: {
-          access_token: command.result,
+          access_token: command.result[:access_token],
+          refresh_token: command.result[:refresh_token],
           message: 'Login Successful'
+        }
+      else
+        render json: { error: command.errors }, status: :unauthorized
+      end
+    end
+
+    def refresh(refresh_token)
+      command = RefreshToken.call(refresh_token)
+      if command.success?
+        render json: {
+          access_token: command.result[:access_token],
+          refresh_token: command.result[:refresh_token],
+          message: 'Token Refresh Successful'
         }
       else
         render json: { error: command.errors }, status: :unauthorized
