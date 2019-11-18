@@ -9,6 +9,7 @@ gem 'rails', '~> 6.0.1'
 # gem 'sqlite3', '~> 1.4'
 
 gem 'devise'
+gem 'devise-jwt'
 
 gem 'pg'
 # Use Puma as the app server
@@ -36,6 +37,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.9.0'
+  gem 'dotenv-rails'
 end
 
 group :development do

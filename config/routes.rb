@@ -1,6 +1,18 @@
 Rails.application.routes.draw do
-  devise_for :users
+  # devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  devise_for :users,
+  path: 'v1/users',
+  path_names: {
+    sign_in: 'signin',
+    sign_out: 'signout',
+    registration: 'signup'
+  },
+  controllers: {
+    sessions: 'v1/sessions',
+    registrations: 'v1/registrations'
+  }
 
   namespace :v1 do
     resources :quizzes do
