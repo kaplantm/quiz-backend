@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_07_042624) do
+ActiveRecord::Schema.define(version: 2019_11_17_234039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "questions", force: :cascade do |t|
     t.string "questionHeader"
-    t.string "question"
-    t.string "answer"
+    t.string "question", null: false
+    t.string "answer", null: false
     t.string "answerHeader"
-    t.integer "difficulty"
+    t.integer "difficulty", default: 2
     t.bigint "quiz_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -28,10 +28,18 @@ ActiveRecord::Schema.define(version: 2019_11_07_042624) do
   end
 
   create_table "quizzes", force: :cascade do |t|
-    t.string "title"
+    t.string "title", null: false
     t.string "created_by"
-    t.boolean "public"
-    t.integer "difficulty"
+    t.boolean "public", default: false
+    t.integer "difficulty", default: 2
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

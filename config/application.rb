@@ -36,5 +36,11 @@ module CardsApi
 
     Rails.logger = Logger.new(STDOUT)
     config.logger = ActiveSupport::Logger.new("log/#{Rails.env}.log")
+
+    #autoloads lib folder during production
+    config.eager_load_paths << Rails.root.join('lib')
+
+    #autoloads lib folder during development
+    config.autoload_paths << Rails.root.join('lib')
   end
 end
