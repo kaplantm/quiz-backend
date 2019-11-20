@@ -32,8 +32,10 @@ ActiveRecord::Schema.define(version: 2019_11_18_222544) do
     t.string "created_by"
     t.boolean "public", default: false
     t.integer "difficulty", default: 2
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_quizzes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -58,5 +60,6 @@ ActiveRecord::Schema.define(version: 2019_11_18_222544) do
   end
 
   add_foreign_key "questions", "quizzes"
+  add_foreign_key "quizzes", "users"
   add_foreign_key "whitelisted_jwts", "users", on_delete: :cascade
 end

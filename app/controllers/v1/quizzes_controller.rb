@@ -40,7 +40,7 @@ class V1::QuizzesController < ApplicationController
     
     def quiz_params
         # whitelist params
-        params.permit(:title, :created_by, :difficulty)
+        params.permit(:title, :created_by, :difficulty).merge(user_id: current_user.id)
     end
     
     def set_quiz

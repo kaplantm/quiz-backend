@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   include Devise::JWT::RevocationStrategies::Whitelist
+  has_many :quizzes, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
           :recoverable, :validatable,
