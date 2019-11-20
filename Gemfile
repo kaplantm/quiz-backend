@@ -9,7 +9,6 @@ gem 'rails', '~> 6.0.1'
 # gem 'sqlite3', '~> 1.4'
 
 gem 'devise'
-gem 'devise-jwt'
 
 gem 'pg'
 # Use Puma as the app server
