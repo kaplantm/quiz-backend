@@ -4,13 +4,15 @@ Doorkeeper.configure do
   # Change the ORM that doorkeeper will use (requires ORM extensions installed).
   # Check the list of supported ORMs here: https://github.com/doorkeeper-gem/doorkeeper#orms
   orm :active_record
+  api_only
+  base_controller 'ActionController::API'
 
   # This block will be called to check whether the resource owner is authenticated or not.
   # resource_owner_authenticator do
-  #   raise "Please configure doorkeeper resource_owner_authenticator block located in #{__FILE__}"
+  #   # raise "Please configure doorkeeper resource_owner_authenticator block located in #{__FILE__}"
   #   # Put your resource owner authentication logic here.
   #   # Example implementation:
-  #   #   User.find_by(id: session[:user_id]) || redirect_to(new_user_session_url)
+  #     User.find_by(id: request.params[:email]) || redirect_to(new_user_session_url)
   # end
 
   resource_owner_from_credentials do |routes|
@@ -172,7 +174,7 @@ Doorkeeper.configure do
   # For more information go to
   # https://doorkeeper.gitbook.io/guides/ruby-on-rails/scopes
   #
-  # default_scopes  :public
+  # default_scopes  :public, :read, :write, :update
   # optional_scopes :write, :update
 
   # Allows to restrict only certain scopes for grant_type.

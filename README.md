@@ -55,13 +55,14 @@ curl -H "Origin: https://kaplantm.github.io/angular_flashcards" -H "Access-Contr
 - will list `< Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD` if allowed
 
 docker-compose run web rake db:drop
-docker-compose run web rake db:seed
 
 docker-compose build
 docker-compose up
 docker-compose run web rake db:create
 docker-compose up --build
 docker-compose run web rails db:migrate RAILS_ENV=development
+
+docker-compose run web rake db:seed
 
 POSTGRESQL_HOST=raild-quiz-api-1.cccufsjkltzb.us-east-1.rds.amazonaws.com POSTGRESQL_USER_NAME=postgres RDS_PORT=5432 POSTGRESQL_PASSWORD=INSERT_HERE POSTGRESQL_DB=quiz_cards_api_db_prod RAILS_ENV=production bundle exec rake db:create
 

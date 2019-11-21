@@ -1,5 +1,5 @@
 class V1::QuizzesController < ApplicationController
-    before_action :authenticate_user!, only: [:create, :update, :destroy]
+    before_action :doorkeeper_authorize!, only: [:create, :update, :destroy]
     before_action :set_quiz, only: [:show, :update, :destroy]
     
     # GET /quizzes
@@ -40,7 +40,7 @@ class V1::QuizzesController < ApplicationController
     
     def quiz_params
         # whitelist params
-        params.permit(:title, :created_by, :difficulty).merge(user_id: current_user.id)
+        params.permit(:title, :created_by, :difficulty).merge(user_id: current_resource_owner.id)
     end
     
     def set_quiz
