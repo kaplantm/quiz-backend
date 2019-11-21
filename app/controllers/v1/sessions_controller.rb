@@ -1,4 +1,5 @@
 class V1::SessionsController < Devise::SessionsController
+  skip_before_action :doorkeeper_authorize!
   respond_to :json
 
   private

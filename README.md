@@ -55,6 +55,7 @@ curl -H "Origin: https://kaplantm.github.io/angular_flashcards" -H "Access-Contr
 - will list `< Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS, HEAD` if allowed
 
 docker-compose run web rake db:drop
+docker-compose run web rake db:seed
 
 docker-compose build
 docker-compose up

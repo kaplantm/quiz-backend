@@ -2,6 +2,10 @@ class ApplicationController < ActionController::API
     include Response
     include ExceptionHandler
 
+    respond_to :json
+
+    protected
+
     def render_resource(resource)
         if resource.errors.empty?
           render json: resource

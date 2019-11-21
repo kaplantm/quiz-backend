@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_18_222544) do
+ActiveRecord::Schema.define(version: 2019_11_07_042624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 2019_11_18_222544) do
 
   create_table "quizzes", force: :cascade do |t|
     t.string "title", null: false
-    t.string "created_by"
     t.boolean "public", default: false
     t.integer "difficulty", default: 2
     t.bigint "user_id", null: false
@@ -50,16 +49,6 @@ ActiveRecord::Schema.define(version: 2019_11_18_222544) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "whitelisted_jwts", force: :cascade do |t|
-    t.string "jti", null: false
-    t.string "aud"
-    t.datetime "exp", null: false
-    t.bigint "user_id", null: false
-    t.index ["jti"], name: "index_whitelisted_jwts_on_jti", unique: true
-    t.index ["user_id"], name: "index_whitelisted_jwts_on_user_id"
-  end
-
   add_foreign_key "questions", "quizzes"
   add_foreign_key "quizzes", "users"
-  add_foreign_key "whitelisted_jwts", "users", on_delete: :cascade
 end
