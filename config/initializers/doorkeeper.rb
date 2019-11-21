@@ -8,21 +8,21 @@ Doorkeeper.configure do
   base_controller 'ActionController::API'
 
   # This block will be called to check whether the resource owner is authenticated or not.
-  # resource_owner_authenticator do
-  #   # raise "Please configure doorkeeper resource_owner_authenticator block located in #{__FILE__}"
-  #   # Put your resource owner authentication logic here.
-  #   # Example implementation:
-  #     User.find_by(id: request.params[:email]) || redirect_to(new_user_session_url)
-  # end
-
-  resource_owner_from_credentials do |routes|
-    request.params[:user] = {email: request.params[:email], password: request.params[:password]}
-    request.env["warden"].logout(:user)
-    request.env["devise.allow_params_authentication"] = true
-    # Set `store: false` to stop Warden from storing user in session
-    # https://github.com/doorkeeper-gem/doorkeeper/issues/475#issuecomment-305517549
-    request.env["warden"].authenticate!(scope: :user, store: false)
+  resource_owner_authenticator do
+    # raise "Please configure doorkeeper resource_owner_authenticator block located in #{__FILE__}"
+    # Put your resource owner authentication logic here.
+    # Example implementation:
+      User.find_by(email: request.params[:email]) || redirect_to(new_user_session_url)
   end
+
+  # resource_owner_from_credentials do |routes|
+  #   request.params[:user] = {email: request.params[:email], password: request.params[:password]}
+  #   request.env["warden"].logout(:user)
+  #   request.env["devise.allow_params_authentication"] = true
+  #   # Set `store: false` to stop Warden from storing user in session
+  #   # https://github.com/doorkeeper-gem/doorkeeper/issues/475#issuecomment-305517549
+  #   request.env["warden"].authenticate!(scope: :user, store: false)
+  # end
 
   # If you didn't skip applications controller from Doorkeeper routes in your application routes.rb
   # file then you need to declare this block in order to restrict access to the web interface for
@@ -174,7 +174,7 @@ Doorkeeper.configure do
   # For more information go to
   # https://doorkeeper.gitbook.io/guides/ruby-on-rails/scopes
   #
-  # default_scopes  :public, :read, :write, :update
+  default_scopes  :public, :read, :write, :update, :create, :delete
   # optional_scopes :write, :update
 
   # Allows to restrict only certain scopes for grant_type.
@@ -292,7 +292,7 @@ Doorkeeper.configure do
   #   http://tools.ietf.org/html/rfc6819#section-4.4.3
   #
   # grant_flows %w[authorization_code client_credentials]
-  grant_flows %w[password]
+  grant_flows %w[authorization_code]
 
   # Allows to customize OAuth grant flows that +each+ application support.
   # You can configure a custom block (or use a class respond to `#call`) that must
@@ -417,3 +417,4 @@ Doorkeeper.configure do
   #
   # realm "Doorkeeper"
 end
+ 
